@@ -1,4 +1,6 @@
 import { User } from "./User/entity/User.entity.js";
+import { checkRegisterInputs } from "./User/useCases/checkUserRegisterInputs.js";
+import { returnUserCreateMessage } from "./User/useCases/returnUserCreateMessage.js";
 
 const form = document.getElementById("form-login");
 const name = document.getElementById("form-name");
@@ -8,20 +10,11 @@ const password = document.getElementById("form-password");
 const registerResult = document.getElementById("registerResult");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  createUserInDB();
+  registerUser();
   console.log(await getUsersInDB());
 });
 
-function checkRegisterInputs({ name, username, email, password }) {
-  if (!name || !username || !email || !password) {
-    registerResult.innerText = "Por favor, preencha todos os campos";
-    return false;
-  } else {
-    return true;
-  }
-}
-
-async function createUserInDB() {
+async function registerUser() {
   try {
     const user = new User(
       name.value,
@@ -33,31 +26,10 @@ async function createUserInDB() {
     if (!validateUserInputs) {
       return;
     }
-
-    const userCreated = await axios
-      .post("http://localhost:8080/register", user)
-      .catch((err) => {
-        if (!err.response) {
-          throw new Error(
-            "Ops, não foi possivel te cadastrar no momento. Tente novamente mais tarde!"
-          );
-        }
-
-        throw new Error(err.response.data.message);
-      });
-    await returnUserCreateMessage(userCreated.data);
+    const userCreated = await createUserInDB(user);
+    returnUserCreateMessage(userCreated.data);
     return userCreated;
   } catch (err) {
     registerResult.innerText = err.message;
   }
-}
-
-async function getUsersInDB() {
-  const users = await axios.get("http://localhost:8080/users");
-  return users.data.users;
-}
-
-async function returnUserCreateMessage(userCreated) {
-  registerResult.innerText = ` Olá ${userCreated.name}!
-                 Obrigado por utilizar nosso software!`;
 }
