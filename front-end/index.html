@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>To-do List</h1>
+      <div class="header-login">
+        <a href="/front-end/login.html">Login</a>
+        <a href="/front-end/register.html">Register</a>
+      </div>
+    </header>
+    <form class="container">
+      <input type="text" placeholder="Digite sua próxima task" id="new-task" />
+
+      <div class="task-urgency">
+        <input
+          type="radio"
+          class="urgency-tasks"
+          name="urgency"
+          id="not-urgent"
+          value="Não urgente"
+        />Não Urgente
+        <input
+          type="radio"
+          class="urgency-tasks"
+          name="urgency"
+          id="little-urgent"
+          value="Pouco Urgente"
+        />
+        Pouco Urgente
+        <input
+          type="radio"
+          class="urgency-tasks"
+          name="urgency"
+          id="urgent"
+          value="Muito urgente"
+        />
+        Muito urgente
+      </div>
+      <button id="submit-task">Submit Task</button>
+      <div class="filter">
+        <input
+          type="text"
+          placeholder="Procure uma task já existente"
+          id="filter-text"
+        />
+        <button id="filter-task" name="filter-task" id="filter-task">
+          Filtrar task
+        </button>
+      </div>
+      <ul id="tasks"></ul>
+    </form>
+
+    <script src="/front-end/scripts/scripts.js"></script>
+  </body>
+</html>
