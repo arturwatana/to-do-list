@@ -53,11 +53,11 @@ header h1 {
 .header-login {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  gap: 50em;
-  padding: 15px;
-  font-size: 20px;
-  background-color: #fdd037;
+  justify-content: space-between;
+  padding: 0 30%;
+  font-size: 25px;
+  width: 100vw;
+  background-color: #12adc1;
 }
 
 .header-login a {
@@ -80,6 +80,17 @@ header h1 {
   height: 50px;
   border-radius: 10px;
   border: none;
+}
+
+#endTaskDate {
+  height: 2em;
+  width: 15em;
+  border-radius: 2px;
+  margin-bottom: 2em;
+}
+.form-input {
+  font-size: 20px;
+  margin-bottom: 0.5em;
 }
 
 li {

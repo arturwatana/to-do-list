@@ -1,3 +1,5 @@
+import { User } from "./User/entity/User.entity.js";
+
 const form = document.getElementById("form-login");
 const name = document.getElementById("form-name");
 const username = document.getElementById("form-username");
@@ -12,30 +14,38 @@ form.addEventListener("submit", async (e) => {
 
 function checkRegisterInputs({ name, username, email, password }) {
   if (!name || !username || !email || !password) {
-    alert("Please enter full fields");
-    return;
+    registerResult.innerText = "Por favor, preencha todos os campos";
+    return false;
+  } else {
+    return true;
   }
 }
 
 async function createUserInDB() {
   try {
-    const user = {
-      name: name.value,
-      username: username.value,
-      email: email.value,
-      password: password.value,
-    };
-    // checkRegisterInputs(user);
+    const user = new User(
+      name.value,
+      username.value,
+      email.value,
+      password.value
+    );
+    const validateUserInputs = checkRegisterInputs(user);
+    if (!validateUserInputs) {
+      return;
+    }
+
     const userCreated = await axios
       .post("http://localhost:8080/register", user)
       .catch((err) => {
         if (!err.response) {
-          throw new Error("Cannot reach the server. Please try again later");
+          throw new Error(
+            "Ops, não foi possivel te cadastrar no momento. Tente novamente mais tarde!"
+          );
         }
 
         throw new Error(err.response.data.message);
       });
-    await returnUserCreateMessage(userCreated);
+    await returnUserCreateMessage(userCreated.data);
     return userCreated;
   } catch (err) {
     registerResult.innerText = err.message;
@@ -48,10 +58,6 @@ async function getUsersInDB() {
 }
 
 async function returnUserCreateMessage(userCreated) {
-  console.log(await userCreated);
-  if (!(await userCreated)) {
-    registerResult.innerText = `Não foi possivel cadastrar seu usuario`;
-  }
-  registerResult.innerText = `User register with success!
-                   Thanks for using this software`;
+  registerResult.innerText = ` Olá ${userCreated.name}!
+                 Obrigado por utilizar nosso software!`;
 }

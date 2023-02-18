@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body>
     <header>
       <h1>To-do List</h1>
       <div class="header-login">
         <div class="home">
-          <a href="/front-end/index.html">Home</a>
+          <a href="/front-end/src/pages/index.html">Home</a>
         </div>
         <div class="account">
-          <a href="/front-end/login.html">Login</a>
-          <a href="/front-end/register.html">Registrar</a>
+          <a href="/front-end/src/pages/login.html">Login</a>
+          <a href="/front-end/src/pages/register.html">Registrar</a>
         </div>
       </div>
     </header>
@@ -48,8 +48,10 @@
         />
         Muito urgente
       </div>
+      <label for="endTaskDate" class="form-input">Data de termino prevista:</label>
+        <input type="date" id="endTaskDate">
       <button id="submit-task">Submit Task</button>
-      <div class="filter">
+     <!-- <div class="filter">
         <input
           type="text"
           placeholder="Procure uma task já existente"
@@ -57,11 +59,11 @@
         />
         <button id="filter-task" name="filter-task" id="filter-task">
           Filtrar task
-        </button>
+        </button> -->
       </div>
-      <ul id="tasks"></ul>
+      <ul id="tasks"></ul> 
     </form>
 
-    <script src="/front-end/scripts/scripts.js"></script>
+    <script type="module" src="../scripts/scripts.js"></script>
   </body>
 </html>
