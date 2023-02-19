@@ -17,8 +17,8 @@ async function userLogin() {
   }
   try {
     const userRequest = {
-      username,
-      password,
+      username: username.value,
+      password: password.value,
     };
     const user = await axios
       .post("http://localhost:8080/login", userRequest)
@@ -27,8 +27,7 @@ async function userLogin() {
         throw new Error(err.response.data.message);
       });
     console.log(user);
-
-    // Continuar login request
+    registerResult.innerText = `Logado com sucesso ${username.value}`;
   } catch (err) {
     registerResult.innerText = err.message;
   }

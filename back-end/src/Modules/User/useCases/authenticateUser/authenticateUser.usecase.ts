@@ -10,14 +10,13 @@ export class AuthenticateUserUseCase {
     if (!user) {
       throw new Error(`Usuario ou senha incorretos`);
     }
-    const comparePasswordEquals = this.passwordHash.compare(
+    const comparePasswordEquals = await this.passwordHash.compare(
       password,
       user.password
     );
     if (!comparePasswordEquals) {
       throw new Error(`Usuario ou senha incorretos`);
     }
-    console.log(passwordIsEqual);
-    return;
+    return `Logado com sucesso ${user.username}`;
   }
 }

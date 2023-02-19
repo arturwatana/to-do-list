@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { UserRepositoryMemory } from "../Modules/User/repositories/implementations/userRepository.memory";
+import { authenticateUserController } from "../Modules/User/useCases/authenticateUser/index";
 import { createUserController } from "../Modules/User/useCases/create-user/index";
 import { getUserInDBController } from "../Modules/User/useCases/get-User";
 
@@ -17,6 +18,8 @@ userRoutes.get("/users", (req, res) => {
 userRoutes.get("/users/:username", async (req, res) => {
   getUserInDBController.handle(req, res);
 });
-userRoutes.get("/login/:username", (req, res) => {});
+userRoutes.post("/login", (req, res) => {
+  authenticateUserController.handle(req, res);
+});
 
 export { userRoutes };

@@ -25,7 +25,7 @@ function addTask() {
     );
     try {
       console.log(newTask);
-      verifyIfTaskExists(newTask, tasks);
+      verifyIfTaskExists(newTask);
       addTaskCardtoScreen(newTask, taskList);
     } catch (err) {
       alert(err);
