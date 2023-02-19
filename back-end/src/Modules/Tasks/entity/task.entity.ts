@@ -5,23 +5,20 @@ export class Task {
   id?: string;
   name: string;
   urgency: string;
-  id_user: string;
-  created_At?: Date;
-  end_at: string;
+  id_user?: string;
+  created_At: Date;
+  end_At: string;
 
-  private constructor({ name, urgency, id_user, end_at }: Task) {
+  private constructor({ name, urgency, id_user, created_At, end_At }: Task) {
     if (!name) {
       throw new CustomError("Name must be provided");
-    }
-    if (!id_user) {
-      throw new CustomError("A task must have an user");
     }
     this.id = randomUUID();
     this.name = name;
     this.urgency = urgency;
     this.id_user = id_user;
-    this.created_At = new Date();
-    this.end_at = end_at;
+    this.created_At = created_At;
+    this.end_At = end_At;
   }
 
   static create(data: Task) {

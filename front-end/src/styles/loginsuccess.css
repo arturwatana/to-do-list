@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.success-message {
+  background-color: #bebebe;
+  width: 1000px;
+  height: 200px;
+  border-radius: 2em;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 2em;
+}

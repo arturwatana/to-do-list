@@ -10,7 +10,7 @@ export class User {
   password: string;
   is_Admin?: boolean;
   tasks?: ITask[];
-  created_at: Date;
+  created_at?: Date;
 
   private constructor({ name, email, username, password }: User) {
     if (!name || !email || !username || !password) {

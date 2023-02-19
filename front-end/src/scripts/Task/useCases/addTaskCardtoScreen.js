@@ -1,4 +1,4 @@
-export function addTaskCardtoScreen(task) {
+export function addTaskCardtoScreen(task, taskListOutput) {
   if (!task) {
     return;
   }
@@ -33,5 +33,5 @@ export function addTaskCardtoScreen(task) {
   card.appendChild(taskUrgency);
   card.appendChild(taskDate);
   card.appendChild(taskEndDate);
-  tasksPanel.appendChild(card);
+  taskListOutput.appendChild(card);
 }

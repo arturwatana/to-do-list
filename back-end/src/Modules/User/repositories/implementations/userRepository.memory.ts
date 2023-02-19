@@ -19,7 +19,11 @@ export class UserRepositoryMemory implements IUserRepository {
   }
 
   async findUserByEmail(email: string): Promise<User | undefined> {
-    const findedUser = await this.users.find((user) => user.email === email);
+    const findedUser = this.users.find((user) => user.email === email);
+    return findedUser;
+  }
+  async findUserByUsername(username: string): Promise<User | undefined> {
+    const findedUser = this.users.find((user) => user.username === username);
     return findedUser;
   }
 }

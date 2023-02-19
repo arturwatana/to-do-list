@@ -5,8 +5,8 @@ import { verifyIfTaskExists } from "./Task/useCases/verifyIfTasksExists.js";
 const taskName = document.querySelector("#new-task");
 const urgency = document.querySelectorAll(".urgency-tasks");
 const btn = document.querySelector("#submit-task");
-const tasks = [];
 const endTaskDate = document.querySelector("#endTaskDate");
+const taskList = document.querySelector("#tasks");
 
 function addTask() {
   btn.addEventListener("click", (e) => {
@@ -24,13 +24,13 @@ function addTask() {
       endTaskDate.value
     );
     try {
-      verifyIfTaskExists(newTask);
+      console.log(newTask);
+      verifyIfTaskExists(newTask, tasks);
+      addTaskCardtoScreen(newTask, taskList);
     } catch (err) {
       alert(err);
       return;
     }
-    tasks.push(newTask);
-    addTaskCardtoScreen(newTask);
   });
 }
 

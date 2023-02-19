@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { IUserPasswordHash } from "../../infra/userPasswordHash/userPasswordHash.interface";
-import { ITasksRepository } from "../../Tasks/repositories/ITaskRepository.interface";
-import { IUserRepository } from "../repositories/IUserRepository.memory";
+import { IUserPasswordHash } from "../../../infra/userPasswordHash/userPasswordHash.interface";
+import { ITasksRepository } from "../../../Tasks/repositories/ITaskRepository.interface";
+import { IUserRepository } from "../../repositories/IUserRepository.memory";
 import { CreateUserUseCase } from "./create-user.usecase";
 
 export class CreateUserController {

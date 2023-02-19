@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { User } from "./user.entity";
+import { User } from "../user.entity";
 
 test("Should be able to create a new User", () => {
   const userMock: User = User.create({

@@ -1,4 +1,3 @@
 export function returnUserCreateMessage(userCreated) {
-  registerResult.innerText = ` Olá ${userCreated.name}!
-                   Obrigado por utilizar nosso software!`;
+  window.location.replace("/front-end/src/pages/login-sucess.html");
 }
