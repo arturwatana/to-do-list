@@ -8,8 +8,8 @@ export class Task {
     const month = new Date().getMonth() + 1;
 
     this.name = name;
-    this.urgency_task = urgency_task;
-    this.todayDate = `${todayDate[2]}/${month}/${todayDate[3]}`;
-    this.endDate = `${endDateFormat[2]}/${endDateFormat[1]}/${endDateFormat[0]}`;
+    this.urgency = urgency_task;
+    this.created_At = `${todayDate[2]}/${month}/${todayDate[3]}`;
+    this.end_At = `${endDateFormat[2]}/${endDateFormat[1]}/${endDateFormat[0]}`;
   }
 }

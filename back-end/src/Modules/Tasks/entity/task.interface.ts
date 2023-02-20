@@ -1,8 +1,8 @@
 export interface ITask {
-  id?: string;
+  id: string;
   name: string;
   urgency: string;
   id_user: string;
-  created_At?: Date;
-  end_at: string;
+  created_At: Date;
+  end_At: string;
 }

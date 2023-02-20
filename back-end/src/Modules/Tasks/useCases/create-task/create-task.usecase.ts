@@ -8,10 +8,10 @@ export class CreateTaskUseCase {
     private usersRepository: IUserRepository
   ) {}
 
-  async execute({ name, urgency, created_At, end_At }: Task, email: string) {
-    const user = await this.usersRepository.findUserByEmail(email);
+  async execute({ name, urgency, created_At, end_At }: Task, username: string) {
+    const user = await this.usersRepository.findUserByUsername(username);
     if (!user) {
-      throw new Error(`User ${email} not found`);
+      throw new Error(`User ${username} not found`);
     }
     const task = Task.create({
       name,

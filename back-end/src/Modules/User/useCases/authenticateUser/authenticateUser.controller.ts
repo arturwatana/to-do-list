@@ -1,4 +1,5 @@
-import { ErrorRequestHandler, Request, Response } from "express";
+import { Request, Response } from "express";
+import { IToken } from "../../../infra/token/IToken.interface";
 import { IUserPasswordHash } from "../../../infra/userPasswordHash/userPasswordHash.interface";
 import { IUserRepository } from "../../repositories/IUserRepository.memory";
 import { AuthenticateUserUseCase } from "./authenticateUser.usecase";
@@ -6,7 +7,8 @@ import { AuthenticateUserUseCase } from "./authenticateUser.usecase";
 export class AuthenticateUserController {
   constructor(
     private usersRepository: IUserRepository,
-    private passwordHash: IUserPasswordHash
+    private passwordHash: IUserPasswordHash,
+    private token: IToken
   ) {}
 
   async handle(req: Request, res: Response) {
@@ -14,7 +16,8 @@ export class AuthenticateUserController {
       const { username, password } = req.body;
       const authenticateUserUseCase = new AuthenticateUserUseCase(
         this.usersRepository,
-        this.passwordHash
+        this.passwordHash,
+        this.token
       );
       const authenticatedUser = await authenticateUserUseCase.execute(
         username,

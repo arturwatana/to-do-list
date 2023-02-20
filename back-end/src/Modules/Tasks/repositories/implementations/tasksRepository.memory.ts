@@ -13,7 +13,7 @@ export class TasksRepositoryMemory implements ITasksRepository {
     }
     return TasksRepositoryMemory.instance;
   }
-  async save(data: Task): Promise<Task> {
+  async save(data: ITask): Promise<Task> {
     this.tasks.push(data);
     return data;
   }

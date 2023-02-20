@@ -13,6 +13,10 @@ export class Task {
     if (!name) {
       throw new CustomError("Name must be provided");
     }
+    console.log(created_At, end_At);
+    if (!created_At || !end_At) {
+      throw new CustomError("end_At must be provided");
+    }
     this.id = randomUUID();
     this.name = name;
     this.urgency = urgency;

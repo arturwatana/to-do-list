@@ -26,7 +26,9 @@ async function userLogin() {
         connectToDBError(err);
         throw new Error(err.response.data.message);
       });
-    console.log(user);
+    const token = user.data.message;
+    localStorage.setItem("auth", token);
+    localStorage.setItem("userName", username.value);
     registerResult.innerText = `Logado com sucesso ${username.value}`;
   } catch (err) {
     registerResult.innerText = err.message;

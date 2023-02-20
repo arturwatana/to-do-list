@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../styles/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
   </head>
   <body>
     <header>
@@ -51,16 +53,8 @@
       <label for="endTaskDate" class="form-input">Data de termino prevista:</label>
         <input type="date" id="endTaskDate">
       <button id="submit-task">Submit Task</button>
-     <!-- <div class="filter">
-        <input
-          type="text"
-          placeholder="Procure uma task já existente"
-          id="filter-text"
-        />
-        <button id="filter-task" name="filter-task" id="filter-task">
-          Filtrar task
-        </button> -->
       </div>
+      <div id="error"></div>
       <ul id="tasks"></ul> 
     </form>
 
