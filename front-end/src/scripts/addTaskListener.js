@@ -2,7 +2,7 @@ import { Task } from "./Task/entity/Task.entity.js";
 import { addTaskCardtoScreen } from "./Task/useCases/addTaskCardtoScreen.js";
 import { saveTaskOnDB } from "./Task/useCases/saveTaskOnDB.js";
 import { validateTaskInputs } from "./Task/useCases/validateTaskInputs.js";
-import { verifyIfTaskExists } from "./Task/useCases/verifyIfTasksExists.js";
+import { showUserTasks } from "./User/useCases/showUserTasks.js";
 
 const taskName = document.querySelector("#new-task");
 const urgency = document.querySelectorAll(".urgency-tasks");

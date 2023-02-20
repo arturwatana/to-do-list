@@ -11,9 +11,9 @@ export function addTaskCardtoScreen(task, taskListOutput) {
   let taskEndDate = document.createElement("h3");
 
   taskName.innerText = task.name;
-  taskUrgency.innerText = task.urgency_task;
-  taskDate.innerText = task.todayDate;
-  taskEndDate.innerText = task.endDate;
+  taskUrgency.innerText = task.urgency;
+  taskDate.innerText = task.created_At;
+  taskEndDate.innerText = task.end_At;
 
   card.classList.add("taskCard");
   checked.setAttribute("type", "radio");

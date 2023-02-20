@@ -14,6 +14,6 @@ export async function saveTaskOnDB(task, token, username) {
       connectToDBError(err);
       throw new Error(err.response.data.error);
     });
-
-  return savedTaskOnDB;
+  console.log(savedTaskOnDB.data);
+  return savedTaskOnDB.data;
 }

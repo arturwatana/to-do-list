@@ -12,10 +12,10 @@ loginButton.addEventListener("click", (e) => {
 });
 
 async function userLogin() {
-  if (!username.value || !password.value) {
-    throw new Error("Por favor, digite os campos!");
-  }
   try {
+    if (!username.value || !password.value) {
+      throw new Error("Por favor, digite os campos!");
+    }
     const userRequest = {
       username: username.value,
       password: password.value,

@@ -22,8 +22,8 @@ export class User {
     this.email = email;
     this.password = password;
     this.is_Admin = false;
-    this.tasks = [];
     this.created_at = new Date();
+    this.tasks = [];
   }
 
   static create(props: User) {

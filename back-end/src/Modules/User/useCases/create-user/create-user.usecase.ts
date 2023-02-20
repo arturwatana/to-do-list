@@ -1,3 +1,4 @@
+import { CustomError } from "../../../errors/customError.error";
 import { IUserPasswordHash } from "../../../infra/userPasswordHash/userPasswordHash.interface";
 import { User } from "../../entity/user.entity";
 import { IUserRepository } from "../../repositories/IUserRepository.memory";
@@ -14,13 +15,13 @@ export class CreateUserUseCase {
       user.email
     );
     if (emailAlreadyExists) {
-      throw new Error(`Email ${user.email} já cadastrado`);
+      throw new CustomError(`Email ${user.email} já cadastrado`, 400);
     }
     const userNameAlreadyExists = await this.userRepository.findUserByUsername(
       username
     );
     if (userNameAlreadyExists) {
-      throw new Error(`Usuario ${user.username} já cadastrado`);
+      throw new CustomError(`Usuario ${user.username} já cadastrado`, 400);
     }
     const passwordHash = await this.passwordHash.hash(user.password);
     user.password = passwordHash;

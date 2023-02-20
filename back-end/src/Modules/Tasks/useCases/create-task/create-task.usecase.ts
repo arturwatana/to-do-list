@@ -1,3 +1,4 @@
+import { CustomError } from "../../../errors/customError.error";
 import { IUserRepository } from "../../../User/repositories/IUserRepository.memory";
 import { Task } from "../../entity/task.entity";
 import { ITasksRepository } from "../../repositories/ITaskRepository.interface";
@@ -11,7 +12,7 @@ export class CreateTaskUseCase {
   async execute({ name, urgency, created_At, end_At }: Task, username: string) {
     const user = await this.usersRepository.findUserByUsername(username);
     if (!user) {
-      throw new Error(`User ${username} not found`);
+      throw new CustomError(`User ${username} not found`);
     }
     const task = Task.create({
       name,
@@ -20,6 +21,8 @@ export class CreateTaskUseCase {
       created_At,
       end_At,
     });
+
+    user.tasks?.push(task);
 
     const savedTask = await this.taskRepository.save(task);
 

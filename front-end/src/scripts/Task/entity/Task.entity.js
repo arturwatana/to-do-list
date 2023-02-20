@@ -5,7 +5,10 @@ export class Task {
 
     const endDateFormat = endDate.split("-");
     const todayDate = new Date().toString().split(" ");
-    const month = new Date().getMonth() + 1;
+    let month = new Date().getMonth() + 1;
+    if (month < 10) {
+      month = `0${month}`;
+    }
 
     this.name = name;
     this.urgency = urgency_task;
