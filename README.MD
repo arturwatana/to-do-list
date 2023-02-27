@@ -1,4 +1,12 @@
+# To do List
+
 Esta é uma aplicação de lista de tarefas com sistema de registro e login. Utilizando as seguintes tecnologias:
+
+<br>
+
+## Tecnologias e conceitos utilizados
+
+---
 
 Back-end:
 
@@ -18,7 +26,11 @@ Front-end:
 - JavaScript
 - Axios
 
-Usuário
+<br>
+
+### Usuário
+
+---
 
 - [x] É possível cadastrar um usuário
 - [x] Não é possível criar um usuário sem as informações de: nome, username, email, password
@@ -26,7 +38,9 @@ Usuário
 - [x] É possível o usuário se logar no sistema
 - [x] O usuário deve possuir um token de autorização com tempo de expiração
 
-Tarefas
+### Tarefas
+
+---
 
 - [x] É possível cadastrar uma tarefa
 - [x] Não é possível cadastrar uma tarefa sem um usuário logado
