@@ -1,12 +1,8 @@
 import { connectToDBError } from "../../errors/connectToDB.error.js";
+import { sendToken } from "../../token/sendToken.js";
 
 export async function saveTaskOnDB(task, token, username) {
-  if (!token) {
-    throw new Error("Token not found");
-  }
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
+  const config = sendToken(token);
 
   const savedTaskOnDB = await axios
     .post(`http://localhost:8080/addtask/${username}`, task, config)

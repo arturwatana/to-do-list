@@ -10,15 +10,15 @@ export class Task {
   created_At: string;
   end_At: string;
 
-  private constructor({ name, urgency, id_user, created_At, end_At }: Task) {
+  private constructor({ name, urgency, id_user, end_At }: Task) {
     if (!name) {
       throw new CustomError("Name must be provided");
     }
-    if (!created_At || !end_At) {
+    if (!end_At) {
       throw new CustomError("end_At must be provided");
     }
 
-    const today = dayjs(created_At);
+    const today = dayjs(new Date());
     const end = dayjs(end_At);
     if (end.isBefore(today)) {
       throw new CustomError(

@@ -8,7 +8,7 @@ const taskRoutes = Router();
 
 const taskRepository = TasksRepositoryMemory.getInstance();
 
-taskRoutes.get("/tasks/:username", (req, res) => {
+taskRoutes.get("/tasks/:username", ensureAuthenticate, (req, res) => {
   showUserTasksController.handle(req, res);
 });
 taskRoutes.post("/addtask/:username", ensureAuthenticate, (req, res) => {
