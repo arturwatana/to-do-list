@@ -16,6 +16,7 @@ Front-end:
 - HTML
 - CSS
 - JavaScript
+- Axios
 
 Usuário
 
