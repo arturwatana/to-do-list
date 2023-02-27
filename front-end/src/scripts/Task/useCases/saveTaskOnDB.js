@@ -12,7 +12,7 @@ export async function saveTaskOnDB(task, token, username) {
     .post(`http://localhost:8080/addtask/${username}`, task, config)
     .catch((err) => {
       connectToDBError(err);
-      throw new Error(err.response.data.error);
+      throw new Error(err.response.data.message);
     });
   return savedTaskOnDB.data;
 }

@@ -28,7 +28,6 @@ export function addTaskCardtoScreen(task, taskListOutput) {
     taskUrgency.classList.add("not-urgency");
   }
 
-  card.appendChild(checked);
   card.appendChild(taskName);
   card.appendChild(taskUrgency);
   card.appendChild(taskDate);

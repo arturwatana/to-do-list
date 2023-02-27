@@ -10,9 +10,15 @@ export class Task {
       month = `0${month}`;
     }
 
+    const newToday = new Date();
     this.name = name;
     this.urgency = urgency_task;
-    this.created_At = `${todayDate[2]}/${month}/${todayDate[3]}`;
-    this.end_At = `${endDateFormat[2]}/${endDateFormat[1]}/${endDateFormat[0]}`;
+    this.created_At = newToday;
+    this.end_At = endDate;
+
+    // this.name = name;
+    // this.urgency = urgency_task;
+    // this.created_At = `${todayDate[2]}/${month}/${todayDate[3]}`;
+    // this.end_At = `${endDateFormat[2]}/${endDateFormat[1]}/${endDateFormat[0]}`;
   }
 }

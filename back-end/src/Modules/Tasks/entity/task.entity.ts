@@ -1,5 +1,6 @@
 import { randomUUID } from "crypto";
 import { CustomError } from "../../errors/customError.error";
+import dayjs from "dayjs";
 
 export class Task {
   id?: string;
@@ -16,12 +17,20 @@ export class Task {
     if (!created_At || !end_At) {
       throw new CustomError("end_At must be provided");
     }
+
+    const today = dayjs(created_At);
+    const end = dayjs(end_At);
+    if (end.isBefore(today)) {
+      throw new CustomError(
+        "Ops, ainda não é possivel criar uma task retroativa"
+      );
+    }
     this.id = randomUUID();
     this.name = name;
     this.urgency = urgency;
     this.id_user = id_user;
-    this.created_At = created_At;
-    this.end_At = end_At;
+    this.created_At = today.format("DD/MM/YYYY");
+    this.end_At = end.format("DD/MM/YYYY");
   }
 
   static create(data: Task) {
