@@ -1,9 +1,10 @@
 import { randomUUID } from "crypto";
 import { CustomError } from "../../errors/customError.error";
 import { ITask } from "../../Tasks/entity/task.interface";
+import { IUser } from "./user.interface";
 
 export class User {
-  id?: string;
+  id: string;
   name: string;
   username: string;
   email: string;
@@ -12,7 +13,7 @@ export class User {
   tasks?: ITask[];
   created_at?: Date;
 
-  private constructor({ name, email, username, password }: User) {
+  private constructor({ name, email, username, password }: IUser) {
     if (!name || !email || !username || !password) {
       throw new CustomError("Required fields are missing!");
     }
@@ -26,7 +27,7 @@ export class User {
     this.tasks = [];
   }
 
-  static create(props: User) {
+  static create(props: IUser) {
     const user = new User(props);
     return user;
   }

@@ -6,7 +6,7 @@ export class Task {
   name: string;
   urgency: string;
   id_user?: string;
-  created_At: Date;
+  created_At: string;
   end_At: string;
 
   private constructor({ name, urgency, id_user, created_At, end_At }: Task) {

@@ -1,4 +1,5 @@
 import { addTaskCardtoScreen } from "../../Task/useCases/addTaskCardtoScreen.js";
+import { getTasksByUsername } from "../../Task/useCases/getTasksByUsername.js";
 import { getUserInDB } from "./getUserInDB.js";
 
 const username = localStorage.getItem("userName");
@@ -10,10 +11,10 @@ export async function showUserTasks() {
     if (!username) {
       throw new Error("Ops, parece que voce ainda nao está logado.");
     }
-    const user = await getUserInDB(username);
+    const userTasks = await getTasksByUsername(username);
 
-    for (let i = 0; i <= user.tasks.length; i++) {
-      addTaskCardtoScreen(user.tasks[i], taskList);
+    for (let i = 0; i <= userTasks.length; i++) {
+      addTaskCardtoScreen(userTasks[i], taskList);
     }
   } catch (err) {
     error.innerText = err.message;

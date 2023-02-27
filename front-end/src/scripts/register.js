@@ -9,10 +9,18 @@ const username = document.getElementById("form-username");
 const email = document.getElementById("form-email");
 const password = document.getElementById("form-password");
 const registerResult = document.getElementById("registerResult");
+const resetForm = document.getElementById("resetForm");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   registerUser();
+});
+
+resetForm.addEventListener("click", () => {
+  name.value = "";
+  username.value = "";
+  email.value = "";
+  password.value = "";
 });
 
 async function registerUser() {
