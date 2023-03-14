@@ -11,4 +11,8 @@ export class TaskMongoRepository implements ITasksRepository {
     const userTasks = await taskModel.find({ id_user: userID });
     return userTasks;
   }
+  async showAllTasks(): Promise<Task[]> {
+    const tasks = await taskModel.find();
+    return tasks;
+  }
 }

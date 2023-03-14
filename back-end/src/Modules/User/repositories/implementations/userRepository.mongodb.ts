@@ -2,7 +2,7 @@ import { User } from "../../entity/user.entity";
 import { IUserRepository } from "../IUserRepository.memory";
 import { UserModel } from "../../../infra/database/models/user.model";
 
-type userRequestType = {
+export type userRequestType = {
   id: string;
   name: string;
   username: string;
@@ -24,5 +24,9 @@ export class UserMongoRepository implements IUserRepository {
   async findUserByUsername(username: string): Promise<User | undefined> {
     const user = await UserModel.find({ username }).exec();
     return user[0];
+  }
+  async findAllUsers(): Promise<User[]> {
+    const users = await UserModel.find().exec();
+    return users;
   }
 }

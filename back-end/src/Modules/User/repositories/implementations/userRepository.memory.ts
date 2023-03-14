@@ -26,4 +26,7 @@ export class UserRepositoryMemory implements IUserRepository {
     const findedUser = this.users.find((user) => user.username === username);
     return findedUser;
   }
+  async findAllUsers(): Promise<User[]> {
+    return this.users;
+  }
 }

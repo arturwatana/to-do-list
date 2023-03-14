@@ -21,4 +21,7 @@ export class TasksRepositoryMemory implements ITasksRepository {
     const userTasks = this.tasks.filter((task) => task.id_user === userID);
     return userTasks;
   }
+  async showAllTasks(): Promise<Task[]> {
+    return this.tasks;
+  }
 }
