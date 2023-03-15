@@ -1,6 +1,8 @@
 # To do List
 
-Esta é uma aplicação de lista de tarefas com sistema de registro e login. Utilizando as seguintes tecnologias:
+Demo: https://to-do-list-artur.vercel.app/
+
+Esta é uma aplicação de lista de tarefas com sistema de registro e login.
 
 <br>
 
@@ -17,6 +19,7 @@ Back-end:
   - DayJS
 - TypeScript
 - MongoDB
+  - Atlas
   - mongoose
 
 Front-end:
