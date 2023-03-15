@@ -8,7 +8,7 @@ const taskList = document.querySelector("#tasks");
 
 export async function showUserTasks() {
   try {
-    if (!username) {
+    if (!username || !token) {
       throw new Error("Ops, parece que voce ainda nao está logado.");
     }
     const userTasks = await getTasksByUsername(username, token);
