@@ -44,7 +44,7 @@ async function userLogin() {
     const token = user.data.message;
     localStorage.setItem("auth", token);
     localStorage.setItem("userName", username.value);
-    redirectUserToPage("/front-end/src/pages/login-success.html");
+    redirectUserToPage("../pages/login-success.html");
   } catch (err) {
     registerResult.innerText = err.message;
   }

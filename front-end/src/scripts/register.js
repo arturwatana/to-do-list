@@ -49,7 +49,7 @@ async function registerUser() {
     }
     const userCreated = await createUserInDB(user);
     localStorage.setItem("userName", userCreated.data.name);
-    redirectUserToPage("/front-end/src/pages/register-success.html");
+    redirectUserToPage("../pages/register-success.html");
   } catch (err) {
     registerResult.innerText = err.message;
   }
