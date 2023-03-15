@@ -5,7 +5,11 @@ export async function saveTaskOnDB(task, token, username) {
   const config = sendToken(token);
 
   const savedTaskOnDB = await axios
-    .post(`http://localhost:8080/addtask/${username}`, task, config)
+    .post(
+      `https://to-do-list-server-o3q8oo2u9-arturwatana.vercel.app/addtask/${username}`,
+      task,
+      config
+    )
     .catch((err) => {
       connectToDBError(err);
       throw new Error(err.response.data.message);
