@@ -9,17 +9,17 @@ export const ensureAuthenticate = (
   const headerAuth = req.headers.authorization;
 
   if (!headerAuth) {
-    return res
-      .status(401)
-      .json({ error: "Ops, parece que voce ainda não efetuou o login" });
+    return res.status(401).json({
+      error: "Ops, parece que voce ainda não efetuou o login",
+    });
   }
 
   const [, token] = headerAuth.split(" ");
 
   if (!token) {
-    return res
-      .status(401)
-      .json({ error: "Ops, parece que voce ainda não efetuou o login" });
+    return res.status(401).json({
+      error: "Ops, parece que voce ainda não efetuou o login",
+    });
   }
 
   const verifyToken = new JWTToken().validate(token);

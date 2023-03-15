@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
 
-export class ConnectToMongoDB {
+export class MongoDB {
   async connect() {
     mongoose.set("strictQuery", true);
     await mongoose.connect(
