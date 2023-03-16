@@ -22,6 +22,7 @@ export class AuthenticateUserUseCase {
     }
 
     const tokenGenerated = this.token.create(user);
-    return { ...user, token: tokenGenerated };
+    const userLogged = { ...user, token: tokenGenerated };
+    return userLogged;
   }
 }

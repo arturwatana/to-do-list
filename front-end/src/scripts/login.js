@@ -3,7 +3,7 @@ import { verifyIfUserAreLoggedIn } from "./User/useCases/verifyIfUserAreLoggedIn
 import { redirectUserToPage } from "./User/useCases/redirectUserToPage.js";
 import { logoutUser } from "./User/useCases/logout.js";
 
-const username = document.getElementById("form-username");
+const email = document.getElementById("form-email");
 const password = document.getElementById("form-password");
 const loginButtonRequest = document.getElementById("loginRequest");
 const registerResult = document.getElementById("registerResult");
@@ -22,14 +22,14 @@ loginButton.addEventListener("click", (e) => {
 
 async function userLogin() {
   try {
-    if (!username.value || !password.value) {
+    if (!email.value || !password.value) {
       throw new Error("Por favor, digite os campos!");
     }
     if (loginButton.innerHTML === "Logout") {
       throw new Error("Ops, voce já está logado!");
     }
     const userRequest = {
-      username: username.value,
+      email: email.value,
       password: password.value,
     };
     const user = await axios
@@ -38,9 +38,9 @@ async function userLogin() {
         connectToDBError(err);
         throw new Error(err.response.data.message);
       });
-    const token = user.data.message;
+    const token = user.data.message.token;
     localStorage.setItem("auth", token);
-    localStorage.setItem("userName", username.value);
+    localStorage.setItem("userName", user.data.message._doc.username);
     redirectUserToPage("../pages/login-success.html");
   } catch (err) {
     registerResult.innerText = err.message;
