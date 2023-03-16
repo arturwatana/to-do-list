@@ -7,5 +7,4 @@ const userName = localStorage.getItem("userName");
 const auth = localStorage.getItem("auth");
 
 verifyIfUserAreLoggedIn(loginButton, auth);
-console.log(loginButton.innerHTML);
 successMessageInput.innerText = `Logado com sucesso, seja bem vindo ${userName}!`;
