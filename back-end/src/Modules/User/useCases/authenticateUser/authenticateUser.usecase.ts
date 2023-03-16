@@ -8,20 +8,20 @@ export class AuthenticateUserUseCase {
     private passwordHash: IUserPasswordHash,
     private token: IToken
   ) {}
-  async execute(username: string, password: string) {
-    const user = await this.usersRepository.findUserByUsername(username);
+  async execute(email: string, password: string) {
+    const user = await this.usersRepository.findUserByEmail(email);
     if (!user) {
-      throw new CustomError(`Usuario ou senha incorretos`, 400);
+      throw new CustomError(`Email ou senha incorretos`, 400);
     }
     const comparePasswordEquals = await this.passwordHash.compare(
       password,
       user.password
     );
     if (!comparePasswordEquals) {
-      throw new CustomError(`Usuario ou senha incorretos`, 400);
+      throw new CustomError(`Email ou senha incorretos`, 400);
     }
 
     const tokenGenerated = this.token.create(user);
-    return tokenGenerated;
+    return { ...user, token: tokenGenerated };
   }
 }

@@ -13,14 +13,14 @@ export class AuthenticateUserController {
 
   async handle(req: Request, res: Response) {
     try {
-      const { username, password } = req.body;
+      const { email, password } = req.body;
       const authenticateUserUseCase = new AuthenticateUserUseCase(
         this.usersRepository,
         this.passwordHash,
         this.token
       );
       const authenticatedUser = await authenticateUserUseCase.execute(
-        username,
+        email,
         password
       );
       res.status(200).send({ message: authenticatedUser });
