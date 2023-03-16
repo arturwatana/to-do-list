@@ -33,10 +33,7 @@ async function userLogin() {
       password: password.value,
     };
     const user = await axios
-      .post(
-        "https://to-do-list-server-o3q8oo2u9-arturwatana.vercel.app/login",
-        userRequest
-      )
+      .post("https://to-do-list-server-nine.vercel.app/login", userRequest)
       .catch((err) => {
         connectToDBError(err);
         throw new Error(err.response.data.message);

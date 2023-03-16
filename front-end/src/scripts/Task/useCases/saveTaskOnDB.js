@@ -5,7 +5,7 @@ export async function saveTaskOnDB(task, token, username) {
   const config = sendToken(token);
   const savedTaskOnDB = await axios
     .post(
-      `https://to-do-list-server-o3q8oo2u9-arturwatana.vercel.app/addtask/${username}`,
+      `https://to-do-list-server-nine.vercel.app/addtask/${username}`,
       task,
       config
     )
