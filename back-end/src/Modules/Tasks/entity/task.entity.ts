@@ -1,6 +1,8 @@
 import { randomUUID } from "crypto";
 import { CustomError } from "../../errors/customError.error";
 import dayjs from "dayjs";
+import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
+dayjs.extend(isSameOrAfter);
 
 export class Task {
   id?: string;
@@ -17,12 +19,12 @@ export class Task {
     if (!end_At) {
       throw new CustomError("end_At must be provided");
     }
-
     const today = dayjs(new Date());
     const end = dayjs(end_At);
-    if (end.isBefore(today)) {
+    const endDateIsBeforeThanToday = end.isBefore(today, "day");
+    if (endDateIsBeforeThanToday) {
       throw new CustomError(
-        "Ops, ainda não é possivel criar uma task retroativa"
+        `Ops, ainda não é possivel criar uma task retroativa!`
       );
     }
     this.id = randomUUID();
