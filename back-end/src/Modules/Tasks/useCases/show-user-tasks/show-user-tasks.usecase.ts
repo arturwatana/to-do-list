@@ -7,8 +7,8 @@ export class ShowUserTasksUseCase {
     private userRepository: IUserRepository,
     private tasksRepository: ITasksRepository
   ) {}
-  async execute(username: string) {
-    const user = await this.userRepository.findUserByUsername(username);
+  async execute(email: string) {
+    const user = await this.userRepository.findUserByEmail(email);
     if (!user) {
       throw new CustomError("User not found");
     }
