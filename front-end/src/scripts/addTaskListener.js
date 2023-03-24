@@ -42,7 +42,6 @@ function addTask() {
         endTaskDate.value
       );
 
-      // verifyIfTaskExists(newTask);
       const savedTaskOnDB = await saveTaskOnDB(newTask, token, username);
       addTaskCardtoScreen(savedTaskOnDB, taskList);
     } catch (err) {
