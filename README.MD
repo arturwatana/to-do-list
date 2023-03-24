@@ -28,6 +28,7 @@ Front-end:
 - CSS
 - JavaScript
 - Axios
+- Vercel
 
 <br>
 
