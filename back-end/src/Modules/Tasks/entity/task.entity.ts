@@ -2,17 +2,18 @@ import { randomUUID } from "crypto";
 import { CustomError } from "../../errors/customError.error";
 import dayjs from "dayjs";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
+import { ITask } from "./task.interface";
 dayjs.extend(isSameOrAfter);
 
 export class Task {
   id?: string;
   name: string;
   urgency: string;
-  id_user?: string;
+  id_user: string;
   created_At: string;
   end_At: string;
 
-  private constructor({ name, urgency, id_user, end_At }: Task) {
+  private constructor({ name, urgency, id_user, end_At }: ITask) {
     if (!name) {
       throw new CustomError("Name must be provided");
     }
