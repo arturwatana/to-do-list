@@ -14,7 +14,7 @@ userRoutes.post("/register", (req, res) => {
 userRoutes.get("/users", async (req, res) => {
   res.send(await userRepository.findAllUsers());
 });
-userRoutes.get("/users/:username", async (req, res) => {
+userRoutes.get("/users/:email", async (req, res) => {
   getUserInDBController.handle(req, res);
 });
 userRoutes.post("/login", (req, res) => {
