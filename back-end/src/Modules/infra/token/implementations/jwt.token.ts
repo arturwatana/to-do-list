@@ -16,7 +16,7 @@ export class JWTToken implements IToken {
       this.TOKEN_SECRET_CRYPTO,
       {
         subject: id,
-        expiresIn: "20m",
+        expiresIn: "8h",
       }
     );
     return token;
