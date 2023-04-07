@@ -10,7 +10,7 @@ export class CreateTaskController {
   ) {}
   async handle(req: Request, res: Response) {
     try {
-      const { username } = req.params;
+      const { email } = req.params;
       const { name, urgency, created_At, end_At } = req.body;
 
       const createTaskUseCase = new CreateTaskUseCase(
@@ -20,7 +20,7 @@ export class CreateTaskController {
 
       const taskCreated = await createTaskUseCase.execute(
         { name, urgency, created_At, end_At },
-        username
+        email
       );
 
       res.status(200).json(taskCreated);

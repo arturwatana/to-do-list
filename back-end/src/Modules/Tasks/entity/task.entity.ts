@@ -22,7 +22,10 @@ export class Task {
       throw new CustomError("end_At must be provided");
     }
     const today = dayjs(new Date());
-    const end = dayjs(end_At);
+    const endDateFormated = end_At.split("/");
+    const end = dayjs(
+      `${endDateFormated[2]}, ${endDateFormated[1]}, ${endDateFormated[0]}`
+    );
     const endDateIsBeforeThanToday = end.isBefore(today, "day");
     if (endDateIsBeforeThanToday) {
       throw new CustomError(
