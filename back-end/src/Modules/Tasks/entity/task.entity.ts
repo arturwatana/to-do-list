@@ -23,7 +23,6 @@ export class Task {
     }
     const today = dayjs(new Date());
     const end = dayjs(end_At);
-    console.log(end_At);
     const endDateIsBeforeThanToday = end.isBefore(today, "day");
     if (endDateIsBeforeThanToday) {
       throw new CustomError(

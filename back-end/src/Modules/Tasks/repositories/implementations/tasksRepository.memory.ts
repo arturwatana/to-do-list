@@ -3,7 +3,7 @@ import { ITask } from "../../entity/task.interface";
 import { ITasksRepository } from "../ITaskRepository.interface";
 
 export class TasksRepositoryMemory implements ITasksRepository {
-  tasks: ITask[] = [];
+  tasks: Task[] = [];
 
   private static instance: TasksRepositoryMemory;
 
@@ -13,7 +13,7 @@ export class TasksRepositoryMemory implements ITasksRepository {
     }
     return TasksRepositoryMemory.instance;
   }
-  async save(data: ITask): Promise<Task> {
+  async save(data: Task): Promise<Task> {
     this.tasks.push(data);
     return data;
   }

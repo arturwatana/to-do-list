@@ -8,10 +8,10 @@ const taskRoutes = Router();
 
 const taskRepository = new TaskMongoRepository();
 
-taskRoutes.get("/tasks/:username", ensureAuthenticate, (req, res) => {
+taskRoutes.get("/tasks/:email", ensureAuthenticate, (req, res) => {
   showUserTasksController.handle(req, res);
 });
-taskRoutes.post("/addtask/:username", ensureAuthenticate, (req, res) => {
+taskRoutes.post("/addtask/:email", ensureAuthenticate, (req, res) => {
   createTaskController.handle(req, res);
 });
 

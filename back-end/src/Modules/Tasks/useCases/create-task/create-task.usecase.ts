@@ -1,6 +1,7 @@
 import { CustomError } from "../../../errors/customError.error";
 import { IUserRepository } from "../../../User/repositories/IUserRepository.memory";
 import { Task } from "../../entity/task.entity";
+import { ITask } from "../../entity/task.interface";
 import { ITasksRepository } from "../../repositories/ITaskRepository.interface";
 
 export class CreateTaskUseCase {
@@ -9,7 +10,10 @@ export class CreateTaskUseCase {
     private usersRepository: IUserRepository
   ) {}
 
-  async execute({ name, urgency, created_At, end_At }: Task, username: string) {
+  async execute(
+    { name, urgency, created_At, end_At }: ITask,
+    username: string
+  ) {
     const user = await this.usersRepository.findUserByUsername(username);
     if (!user) {
       throw new CustomError(`User ${username} not found`);
