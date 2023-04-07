@@ -4,6 +4,7 @@ import { TaskMongoRepository } from "../Modules/Tasks/repositories/implementatio
 import { createTaskController } from "../Modules/Tasks/useCases/create-task/index";
 import { showUserTasksController } from "../Modules/Tasks/useCases/show-user-tasks/index";
 import { changeTaskNameController } from "../Modules/Tasks/useCases/change-task-name/index";
+import { deleteTaskController } from "../Modules/Tasks/useCases/delete-task/index";
 
 const taskRoutes = Router();
 
@@ -18,6 +19,10 @@ taskRoutes.post("/addtask/:email", ensureAuthenticate, (req, res) => {
 
 taskRoutes.put("/tasks/:id", ensureAuthenticate, (req, res) => {
   changeTaskNameController.handle(req, res);
+});
+
+taskRoutes.delete("/tasks/:id", ensureAuthenticate, (req, res) => {
+  deleteTaskController.handle(req, res);
 });
 
 taskRoutes.get("/tasks", async (req, res) => {
