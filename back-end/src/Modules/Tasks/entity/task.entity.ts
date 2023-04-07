@@ -6,11 +6,12 @@ import { ITask } from "./task.interface";
 dayjs.extend(isSameOrAfter);
 
 export class Task {
-  id?: string;
+  id: string;
   name: string;
   urgency: string;
   id_user: string;
   created_At: string;
+  updated_At: string;
   end_At: string;
 
   private constructor({ name, urgency, id_user, end_At }: ITask) {
@@ -22,21 +23,26 @@ export class Task {
     }
     const today = dayjs(new Date());
     const end = dayjs(end_At);
+    console.log(end_At);
     const endDateIsBeforeThanToday = end.isBefore(today, "day");
     if (endDateIsBeforeThanToday) {
       throw new CustomError(
         `Ops, ainda não é possivel criar uma task retroativa!`
       );
     }
+    if (!id_user) {
+      throw new CustomError("Cannot find user");
+    }
     this.id = randomUUID();
     this.name = name;
     this.urgency = urgency;
     this.id_user = id_user;
-    this.created_At = today.format("DD/MM/YYYY");
+    this.created_At = today.format("DD/MM/YYYY hh:mm:ss");
+    this.updated_At = today.format("DD/MM/YYYY hh:mm:ss");
     this.end_At = end.format("DD/MM/YYYY");
   }
 
-  static create(data: Task) {
+  static create(data: ITask) {
     const task = new Task(data);
     return task;
   }
