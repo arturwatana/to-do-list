@@ -8,7 +8,7 @@ export class DeleteTaskController {
     try {
       const { id } = req.params;
       const deleteTaskUseCase = new DeleteTaskUseCase(this.taskRepository);
-      const deletedTask = deleteTaskUseCase.execute(id);
+      const deletedTask = await deleteTaskUseCase.execute(id);
       res.status(200).json(deletedTask);
     } catch (err: any) {
       res.status(400).json(err.message);
