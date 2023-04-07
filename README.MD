@@ -46,7 +46,9 @@ Front-end:
 
 ---
 
-- [x] É possível cadastrar uma tarefa
-- [x] Não é possível cadastrar uma tarefa sem um usuário logado
-- [x] Não é possível cadastrar uma tarefa sem as informações de: Nome Da Tarefa, Urgência, Data de término.
+- [x] Deve ser possível cadastrar uma tarefa
+- [x] Não deve possível cadastrar uma tarefa sem um usuário logado
+- [x] Não deve possível cadastrar uma tarefa sem as informações de: Nome Da Tarefa, Urgência, Data de término.
 - [x] Não deve ser possível cadastrar uma task com a data de termino menor do que a data de criação
+- [x] Deve ser possivel excluir uma tarefa
+- [x] Deve ser possivel alterar o nome de uma tarefa
