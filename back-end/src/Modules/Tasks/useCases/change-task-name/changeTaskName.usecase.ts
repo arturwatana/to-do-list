@@ -1,5 +1,3 @@
-import { Task } from "vitest";
-import { IUserRepository } from "../../../User/repositories/IUserRepository.memory";
 import { ITasksRepository } from "../../repositories/ITaskRepository.interface";
 import { CustomError } from "../../../errors/customError.error";
 

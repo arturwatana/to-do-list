@@ -11,17 +11,14 @@ export class CreateTaskController {
   async handle(req: Request, res: Response) {
     try {
       const { email } = req.params;
-      const { name, urgency, created_At, end_At } = req.body;
+      const data = req.body;
 
       const createTaskUseCase = new CreateTaskUseCase(
         this.tasksRepository,
         this.usersRepository
       );
 
-      const taskCreated = await createTaskUseCase.execute(
-        { name, urgency, created_At, end_At },
-        email
-      );
+      const taskCreated = await createTaskUseCase.execute(data, email);
 
       res.status(200).json(taskCreated);
     } catch (err: any) {
