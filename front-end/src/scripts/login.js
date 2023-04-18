@@ -40,7 +40,7 @@ async function userLogin() {
       });
     const token = user.data.message.token;
     localStorage.setItem("auth", token);
-    localStorage.setItem("userName", user.data.message._doc.username);
+    localStorage.setItem("email", user.data.message._doc.email);
     redirectUserToPage("../pages/login-success.html");
   } catch (err) {
     registerResult.innerText = err.message;
