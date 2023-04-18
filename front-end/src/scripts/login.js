@@ -33,14 +33,14 @@ async function userLogin() {
       password: password.value,
     };
     const user = await axios
-      .post("https://to-do-list-server-nine.vercel.app/login", userRequest)
+      .post("http://localhost:8080/login", userRequest)
       .catch((err) => {
         connectToDBError(err);
         throw new Error(err.response.data.message);
       });
     const token = user.data.message.token;
     localStorage.setItem("auth", token);
-    localStorage.setItem("userName", user.data.message._doc.username);
+    localStorage.setItem("email", user.data.message._doc.email);
     redirectUserToPage("../pages/login-success.html");
   } catch (err) {
     registerResult.innerText = err.message;

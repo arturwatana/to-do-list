@@ -26,7 +26,7 @@ function addTask() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("auth");
-      const username = localStorage.getItem("userName");
+      const email = localStorage.getItem("email");
       let urgency_task;
 
       urgency.forEach((task) => {
@@ -42,7 +42,7 @@ function addTask() {
         endTaskDate.value
       );
 
-      const savedTaskOnDB = await saveTaskOnDB(newTask, token, username);
+      const savedTaskOnDB = await saveTaskOnDB(newTask, token, email);
       addTaskCardtoScreen(savedTaskOnDB, taskList);
     } catch (err) {
       error.innerText = err.message;
