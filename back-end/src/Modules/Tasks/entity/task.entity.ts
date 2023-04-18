@@ -39,7 +39,7 @@ export class Task {
     this.name = name;
     this.urgency = urgency;
     this.id_user = id_user;
-    this.created_At = today.format("DD/MM/YYYY hh:mm:ss");
+    this.created_At = today.format("DD/MM/YYYY");
     this.updated_At = today.format("DD/MM/YYYY hh:mm:ss");
     this.end_At = end.format("DD/MM/YYYY");
   }
