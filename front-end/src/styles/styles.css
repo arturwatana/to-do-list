@@ -62,6 +62,8 @@ header h1 {
 
 .header-login a {
   text-decoration: none;
+  color: #fff;
+  margin-right: 2em;
 }
 
 #filter-task {
